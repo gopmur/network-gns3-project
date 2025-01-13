@@ -1,7 +1,8 @@
 # GNS3 Computer Networks Final Project
 This is a complete guide on how to implement this topology on GNS3 so that all hosts have access to the internet and can ping each other.
 
-![alt text](image-8.png)
+![alt text](image.png)
+
 ## Table of content
 - [Router Setup](#router-setup)
 - [Host Setup](#host-setup)
@@ -58,7 +59,7 @@ Then go head an open up GNS3 and navigate to **edit > preferences** and under **
 
 For setting up the internet connection we need to use the cloud node in GNS3. first we need to drop the cloud node and our router on the screen and connect the router's f0/0 interface to the desired host machines's interface. Note that you shouldn't use the wifi interface since it won't work properly. If you don't see your desired interface double click on the cloud node and refresh to add the interface you're looking for. after these steps this will be the result.
 
-![alt text](image-2.png)
+![alt text](image-3.png)
 
 Then go ahead and start up the router and double click to open the routers console.
 You can examine the status of interfaces by using this command
@@ -142,7 +143,7 @@ R1# write memory
 ## Adding VLANs
 Now we will add these three VLANs to our topology like so.
 
-![alt text](image.png)
+![alt text](image-1.png)
 
 Firstly we need to configure the VLANs on the ESW1's ports to do this we'll use these commands.<br>
 For VLAN 20
@@ -384,7 +385,7 @@ PING google.com (216.239.38.120) 56(84) bytes of data.
 
 Now let's add the third host connecting it to the network through R2.
 
-![alt text](image-9.png)
+![alt text](image-2.png)
 
 Now we assign IP address of 192.168.1.1 to f1/0 on R2 and define a DHCP IP pool so that hosts on 192.168.1.0/24 would get assigned an IP address automatically.
 ```
