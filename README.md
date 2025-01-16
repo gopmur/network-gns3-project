@@ -187,7 +187,7 @@ Finally we will define a trunk port on f1/0 so the hosts on each VLAN can commun
 ```
 ESW1(config-if)# interface f1/0
 ESW1(config-if)# switchport trunk encapsulation dot1Q
-ESW1(config-if)# switchport trunk allowed vlan 1-2,10-22,1002-1005
+ESW1(config-if)# switchport trunk allowed vlan 1-2,20-22,1002-1005
 ESW1(config-if)# switchport mode trunk
 ESW1(config-if)# end
 ESW1# write memory
