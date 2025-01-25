@@ -1,0 +1,15 @@
+ESW1#show running-config | section dhcp
+no service dhcp
+no ip dhcp use vrf connected
+ip dhcp excluded-address 172.23.20.20
+ip dhcp excluded-address 172.23.20.1
+ip dhcp excluded-address 172.23.21.21
+ip dhcp excluded-address 172.23.21.1
+ip dhcp pool VLAN20_POOL
+   network 172.23.20.0 255.255.255.0
+   default-router 172.23.20.1 
+   dns-server 8.8.8.8 
+ip dhcp pool VLAN21_POOL
+   network 172.23.21.0 255.255.255.0
+   default-router 172.23.21.1 
+   dns-server 8.8.8.8 

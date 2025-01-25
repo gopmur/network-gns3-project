@@ -249,7 +249,37 @@ R1# write memory
 
 ## Configuring Hosts Using DHCP
 
-Now that we have configured the VLANs we need to assign the hosts on these VLANs an IP address so that they can communicate with each other. To do this we will use the R1 router as the DHCP server.
+```
+interface vlan 20
+ip address 172.23.20.20 255.255.255.0
+no shutdown
+
+ip dhcp pool VLAN20_POOL
+network 172.23.20.0 255.255.255.0
+default-router 172.23.20.1
+dns-server 8.8.8.8
+ip dhcp excluded-address 172.23.20.20
+ip dhcp excluded-address 172.23.20.1
+
+interface vlan 21
+ip address 172.23.21.20 255.255.255.0
+no shutdown
+
+ip dhcp pool VLAN21_POOL
+network 172.23.21.0 255.255.255.0
+default-router 172.23.21.1
+dns-server 8.8.8.8
+ip dhcp excluded-address 172.23.21.21
+ip dhcp excluded-address 172.23.21.1
+
+show running-config | section dhcp
+
+ESW1# configure terminal
+ESW1(config)# service dhcp
+no ip dhcp use vrf connected
+```
+
+<!-- Now that we have configured the VLANs we need to assign the hosts on these VLANs an IP address so that they can communicate with each other. To do this we will use the R1 router as the DHCP server.
 
 We will define an IP pool named VLAN20 and give it the network address of 172.23.20.0/24 and the default gate way of 172.23.20.1 which is the IP address for the sub-interface on R1's f1/0 that we have previously configured. And finally add the google's DNS server (8.8.8.8) so that any host configured with DHCP will use this DNS server.   
 ```
@@ -297,7 +327,7 @@ PING 172.23.21.2 (172.23.21.2) 56(84) bytes of data.
 64 bytes from 172.23.21.2: icmp_seq=2 ttl=63 time=17.3 ms
 64 bytes from 172.23.21.2: icmp_seq=3 ttl=63 time=13.6 ms
 64 bytes from 172.23.21.2: icmp_seq=4 ttl=63 time=18.4 ms
-```
+``` -->
 
 ## Connecting The Routers To Each Other
 Firstly the R2 router needs to be assigned an IP address.
